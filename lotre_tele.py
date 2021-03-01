@@ -15,13 +15,13 @@ def main(message):
 		pro = int(url_json['items'][0]['period'])+int(1)
 		waktuku = int(url_json['items'][0]['endTime'])-int(url_json['items'][0]['beginTime'])-int(3)
 		y = int(url_json['items'][1]['period'][11])
-		pertama = int(url_json['items'][0]['number']) - int(url_json['items'][2]['number'])
+		pertama = int(url_json['items'][1]['number']) - int(url_json['items'][3]['number'])
 		total1 = pertama + int(url_json['items'][0]['number'])
 		pertama_bwh = int(url_json['items'][1]['number']) + int(url_json['items'][3]['number'])
 		kedua_bwh = int(url_json['items'][0]['number']) + int(url_json['items'][2]['number'])
 		total2 = total1 + pertama_bwh
 		total3 = kedua_bwh + total2
-		hasil = total1 + total2
+		hasil = total2 + int(url_json['items'][8]['number'])
 		if hasil%2 == 0 :
 			bot.send_message(message.chat.id,"CEPAT PLUSS++\n"+str(pro)+"\U0001f34e\U0001f34e")
 			# str(hasil))
