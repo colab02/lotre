@@ -10,18 +10,20 @@ bot = telebot.TeleBot(api)
 @bot.message_handler(commands=['2'])
 def main(message):
 	for u in range(0,99999999999999999999999999999999999999999999999999999999999999):
-		url = requests.get('https://lotre.io/api/main/game/rounds?page=1&count=40&type=3')
 		url_json = url.json()
 		pro = int(url_json['items'][0]['period'])+int(1)
 		waktuku = int(url_json['items'][0]['endTime'])-int(url_json['items'][0]['beginTime'])-int(3)
-		y = int(url_json['items'][1]['period'][11])
-		pertama = int(url_json['items'][1]['number']) - int(url_json['items'][3]['number'])
-		total1 = pertama + int(url_json['items'][0]['number'])
-		pertama_bwh = int(url_json['items'][1]['number']) + int(url_json['items'][3]['number'])
-		kedua_bwh = int(url_json['items'][0]['number']) + int(url_json['items'][2]['number'])
-		total2 = total1 + pertama_bwh
-		total3 = kedua_bwh + total2
-		hasil = total2 + int(url_json['items'][8]['number'])
+		pro1 = int(url_json['items'][0]['period'])
+		pertama = int(url_json['items'][0]['number']) + int(url_json['items'][2]['number'])
+		kedua = int(url_json['items'][2]['number']) + int(url_json['items'][3]['number'])
+		total1 = pertama + kedua
+		ketiga = int(url_json['items'][7]['number']) + int(url_json['items'][9]['number'])
+		total2 = total1 - ketiga
+		x = int(url_json['items'][1]['period'][11]) + int(url_json['items'][0]['number'])
+		y = int(url_json['items'][2]['period'][11]) + int(url_json['items'][1]['number'])
+		empat = x - y
+		# hasil = total2 + empat
+		hasil = int(url_json['items'][0]['number']) - int(url_json['items'][7]['number'])
 		if hasil%2 == 0 :
 			bot.send_message(message.chat.id,"CEPAT PLUSS++\n"+str(pro)+"\U0001f34e\U0001f34e")
 			# str(hasil))
