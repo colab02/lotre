@@ -10,6 +10,7 @@ bot = telebot.TeleBot(api)
 @bot.message_handler(commands=['2'])
 def main(message):
 	for u in range(0,99999999999999999999999999999999999999999999999999999999999999):
+		url = requests.get('https://lotre.io/api/main/game/rounds?page=1&count=1000&type=3')
 		url_json = url.json()
 		pro = int(url_json['items'][0]['period'])+int(1)
 		waktuku = int(url_json['items'][0]['endTime'])-int(url_json['items'][0]['beginTime'])-int(3)
